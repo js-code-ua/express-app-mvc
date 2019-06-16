@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
-    _id: Schema.Types.ObjectId,
     name: String,
     parentId: {
         type: Schema.Types.ObjectId,
@@ -11,4 +10,4 @@ const schema = new Schema({
 
 const Category = model('Category', schema);
 
-module.exports = Category;
+module.exports = { Instance: Category, Schema };

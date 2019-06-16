@@ -1,10 +1,14 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const inject = require('require-all');
 const mongoose = require('mongoose');
 
 const app = express();
 const router = express.Router;
 const port = 3000;
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
 try {
     const controllers = inject(__dirname + '/controllers');
