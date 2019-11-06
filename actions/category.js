@@ -1,5 +1,9 @@
+const { categoryValidate } = require('../validators/category');
+
 module.exports = ({ category }) => ({
     add: (payload) => {
+        categoryValidate.add(payload);
+        
         const {name, parentId} = payload;
         const c = new category.Instance({
             name,
