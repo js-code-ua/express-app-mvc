@@ -9,8 +9,13 @@ const categoryFields = [
 
 class CategoryValidate {
     add(payload) {
+        if (!payload) {
+            const error = ValidationError('payload', '"payload" is required!');
+            throw error;
+        }
+
         if (!payload.name) {
-            throw new ValidationError('name', '"name" is required!');
+            throw ValidationError('name', '"payload.name" is required!');
         }
 
         if (payload.parentId && (
@@ -18,7 +23,7 @@ class CategoryValidate {
             ||
             !validator.isUUID(payload.parentId))
         ) {
-            throw new ValidationError('parentId', '"parentId" must be a String!');
+            throw ValidationError('parentId', '"payload.parentId" must be a String!');
         }
 
         return _.pick(payload, categoryFields);

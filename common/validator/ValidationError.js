@@ -1,8 +1,1 @@
-class ValidationError {
-    constroctor(param, message){
-        this.param = param;
-        this.message = message;
-    }
-}
-
-module.exports = ValidationError;
+module.exports = (param, message) => ({ param, message });

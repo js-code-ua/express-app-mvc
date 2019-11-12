@@ -1,3 +1,6 @@
+const HttpStatus = require('http-status-codes');
+const { categoryValidate } = require('../validators/category');
+
 module.exports = ({ router, actions, models }) => {
 
     const routes = router();
@@ -16,9 +19,16 @@ module.exports = ({ router, actions, models }) => {
     });
 
     routes.post('/', async (req, res) => {
-        const target = await category.add(req.body.payload)
+        try {
+            const reqData = categoryValidate.add(req.body.payload);
+            const target = await category.add(reqData);
 
-        res.send(target);
+            res.send(target);
+        } catch (e) {
+            res
+                .status(HttpStatus.BAD_REQUEST)
+                .send(e);
+        }
     });
 
     routes.delete('/:id', async (req, res) => {

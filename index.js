@@ -15,7 +15,7 @@ try {
     const actions = inject(__dirname + '/actions');
     const models = inject(__dirname + '/models');
 
-    mongoose.connect('mongodb://localhost:32768/blog', {useNewUrlParser: true});
+    mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true});
 
     const db = mongoose.connection;
     
