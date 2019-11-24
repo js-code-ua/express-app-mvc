@@ -23,7 +23,7 @@ class CategoryValidate {
             ||
             !validator.isUUID(payload.parentId))
         ) {
-            throw ValidationError('parentId', '"payload.parentId" must be a String!');
+            throw ValidationError('parentId', '"payload.parentId" must be an UUID String!');
         }
 
         return _.pick(payload, categoryFields);
